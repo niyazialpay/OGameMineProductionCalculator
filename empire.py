@@ -16,7 +16,7 @@ def metal_per_hour(
         pallets_speed
 ):
     base_value = round(30 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100)
-    if main_income > 0:
+    if main_income > 240:
         base_value = round(30 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100) * (main_income / 240)
     collector_value = round(base_value * 0.25)
     merchant_value = round(base_value * 0.05)
@@ -55,7 +55,7 @@ def crystal_per_hour(
         pallets_speed
 ):
     base_value = round(20 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100)
-    if main_income > 0:
+    if main_income > 120:
         base_value = round(20 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100) * (main_income / 120)
     collector_value = round(base_value * 0.25)
     merchant_value = round(base_value * 0.05)
