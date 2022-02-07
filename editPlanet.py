@@ -1,4 +1,4 @@
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic
 from PyQt5.QtWidgets import QDialog
 from db import empire
 from main import Ui
