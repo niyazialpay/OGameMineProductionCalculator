@@ -22,7 +22,7 @@ def metal_per_hour(
     merchant_value = round(base_value * 0.05)
     item_value = round(base_value * item / 100)
     plasma_tech_value = round(base_value * plasma_tech * 0.01)
-    geologist_value = round(base_value * 0.01)
+    geologist_value = round(base_value * 0.1)
     pallets_value = base_value * 0.0002 * pallets * pallets_speed / 100
 
     if merchant:
@@ -61,7 +61,7 @@ def crystal_per_hour(
     merchant_value = round(base_value * 0.05)
     item_value = round(base_value * item / 100)
     plasma_tech_value = round(base_value * plasma_tech * 0.0066)
-    geologist_value = round(base_value * 0.01)
+    geologist_value = round(base_value * 0.1)
     pallets_value = base_value * 0.0002 * pallets * pallets_speed / 100
 
     if merchant:
@@ -103,7 +103,7 @@ def deuterium_per_hour(
     merchant_value = round(base_value * 0.05)
     item_value = round(base_value * item / 100)
     plasma_tech_value = round(base_value * plasma_tech * 0.0033)
-    geologist_value = round(base_value * 0.01)
+    geologist_value = round(base_value * 0.1)
     pallets_value = base_value * 0.0002 * pallets * pallets_speed / 100
 
     if merchant:
