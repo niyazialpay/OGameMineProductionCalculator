@@ -95,7 +95,7 @@ class EmpireDB:
                 regex.integer(values["crystal_speed"])) + ", deuterium_speed=" + str(
                 regex.integer(values["deuterium_speed"])) + ", solar_plant_speed=" + str(
                 regex.integer(values["solar_plant_speed"])) + ", fusion_speed=" + str(
-                regex.integer(values["fusion_speed"])) + ", solar_sattelite_speed=" + str(regex.integer(values["solar_sattelite_speed"])) + ", pallets=" + str(regex.integer(values["pallets"])) + ", pallets_speed=" + str(regex.integer(values["pallets_speed"])) + " where planet_id=" +
+                regex.integer(values["fusion_speed"])) + ", solar_sattelite_speed=" + str(regex.integer(values["solar_sattelite_speed"])) + ", crawler=" + str(regex.integer(values["crawler"])) + ", crawler_speed=" + str(regex.integer(values["crawler_speed"])) + " where planet_id=" +
             str(regex.integer(values["planet_id"]))
         )
         self.__connection.commit()
@@ -110,7 +110,7 @@ class EmpireDB:
             return None
 
     def saveUniverseSettings(self, values):
-        self.__db.execute("update research_and_officers set plasma_tech=" + str(regex.integer(values["plasma_tech"])) + ", energy_tech=" + str(regex.integer(values["energy_tech"])) + ", economy_speed=" + str(regex.integer(values["economy_speed"])) + ", geologist=" + str(regex.check_bool(values["geologist"])) + ", engineer=" + str(regex.check_bool(values["engineer"])) + ", recruit_officers=" + str(regex.check_bool(values["recruit_officers"])) + ", collector=" + str(regex.check_bool(values["collector"])) + ", merchant=" + str(regex.check_bool(values["merchant"])) + " where id=1")
+        self.__db.execute("update research_and_officers set plasma_tech=" + str(regex.integer(values["plasma_tech"])) + ", energy_tech=" + str(regex.integer(values["energy_tech"])) + ", economy_speed=" + str(regex.integer(values["economy_speed"])) + ", geologist=" + str(regex.check_bool(values["geologist"])) + ", engineer=" + str(regex.check_bool(values["engineer"])) + ", commanding_staff=" + str(regex.check_bool(values["commanding_staff"])) + ", collector=" + str(regex.check_bool(values["collector"])) + ", trader=" + str(regex.check_bool(values["trader"])) + " where id=1")
         self.__connection.commit()
 
     def UniverseSettings(self):

@@ -70,18 +70,18 @@ class Ui(QtWidgets.QMainWindow):
 
         self.checkBoxEngineer = self.findChild(QtWidgets.QCheckBox, 'checkBoxEngineer')
         self.checkBoxGeologist = self.findChild(QtWidgets.QCheckBox, 'checkBoxGeologist')
-        self.checkBoxRecruitOfficers = self.findChild(QtWidgets.QCheckBox, 'checkBoxRecruitOfficers')
+        self.checkBoxCommandingStaff = self.findChild(QtWidgets.QCheckBox, 'checkBoxCommandingStaff')
         self.checkBoxCollector = self.findChild(QtWidgets.QCheckBox, 'checkBoxCollector')
-        self.checkBoxMerchant = self.findChild(QtWidgets.QCheckBox, 'checkBoxMerchant')
+        self.checkBoxTrader = self.findChild(QtWidgets.QCheckBox, 'checkBoxTrader')
         self.pushButtonSaveGlobalSettings = self.findChild(QtWidgets.QPushButton, 'pushButtonSaveGlobalSettings')
         self.pushButtonSaveGlobalSettings.clicked.connect(self.saveUniverseSettings)
 
         self.tableWidgetPlanetTotal = self.findChild(QtWidgets.QTableWidget, 'tableWidgetPlanetTotal')
 
-        self.comboBoxPalletsSpeed = self.findChild(QtWidgets.QComboBox, 'comboBoxPalletsSpeed')
-        self.lineEditPallets = self.findChild(QtWidgets.QLineEdit, 'lineEditPallets')
-        self.label_pallets = self.findChild(QtWidgets.QLabel, 'label_pallets')
-        self.comboBoxPalletsSpeed.setCurrentIndex(5)
+        self.comboBoxCrawlerSpeed = self.findChild(QtWidgets.QComboBox, 'comboBoxCrawlerSpeed')
+        self.lineEditCrawler = self.findChild(QtWidgets.QLineEdit, 'lineEditCrawler')
+        self.label_crawler = self.findChild(QtWidgets.QLabel, 'label_crawler')
+        self.comboBoxCrawlerSpeed.setCurrentIndex(5)
 
     def setupUi(self):
         self.pushButtonPlanetAdd.clicked.connect(self.addPlanet)
@@ -95,7 +95,7 @@ class Ui(QtWidgets.QMainWindow):
         self.tableWidgetPlanetList.clicked.connect(self.PlanetLevels)
 
         self.lineEditPlanetID.setVisible(False)
-        self.univerResources()
+        self.universeResources()
 
         self.comboBoxSolarSattelite.currentIndexChanged.connect(self.PlanetResources)
         self.comboBoxSolarPlant.currentIndexChanged.connect(self.PlanetResources)
@@ -126,12 +126,12 @@ class Ui(QtWidgets.QMainWindow):
 
         self.checkBoxEngineer.stateChanged.connect(self.PlanetResources)
         self.checkBoxGeologist.stateChanged.connect(self.PlanetResources)
-        self.checkBoxRecruitOfficers.stateChanged.connect(self.PlanetResources)
+        self.checkBoxCommandingStaff.stateChanged.connect(self.PlanetResources)
         self.checkBoxCollector.stateChanged.connect(self.PlanetResources)
-        self.checkBoxMerchant.stateChanged.connect(self.PlanetResources)
+        self.checkBoxTrader.stateChanged.connect(self.PlanetResources)
 
-        self.lineEditPallets.textChanged.connect(self.PlanetResources)
-        self.comboBoxPalletsSpeed.currentIndexChanged.connect(self.PlanetResources)
+        self.lineEditCrawler.textChanged.connect(self.PlanetResources)
+        self.comboBoxCrawlerSpeed.currentIndexChanged.connect(self.PlanetResources)
 
         self.allPlanetsTotal()
 
@@ -239,8 +239,8 @@ class Ui(QtWidgets.QMainWindow):
             self.lineEditEnergyItem.setText(str(levels["energy_item"]))
             self.lineEditMetalIncome.setText(str(levels["metal_main_income"]))
             self.lineEditCrystalIncome.setText(str(levels["crystal_main_income"]))
-            self.lineEditPallets.setText(str(levels["pallets"]))
-            self.label_pallets.setText("Pallets (" + str(
+            self.lineEditCrawler.setText(str(levels["crawler"]))
+            self.label_crawler.setText("Crawler (" + str(
                 (int(levels["metal_mine"]) + int(levels["crystal_mine"]) + int(levels["deuterium_mine"])) * 8) + ")")
 
             # production speeds
@@ -400,39 +400,39 @@ class Ui(QtWidgets.QMainWindow):
                 solar_sattelite_index = 0
             self.comboBoxSolarSattelite.setCurrentIndex(solar_sattelite_index)
 
-            if levels["pallets_speed"] == 150:
-                pallets_index = 0
-            elif levels["pallets_speed"] == 140:
-                pallets_index = 1
-            elif levels["pallets_speed"] == 130:
-                pallets_index = 2
-            elif levels["pallets_speed"] == 120:
-                pallets_index = 3
-            elif levels["pallets_speed"] == 110:
-                pallets_index = 4
-            elif levels["pallets_speed"] == 100:
-                pallets_index = 5
-            elif levels["pallets_speed"] == 90:
-                pallets_index = 6
-            elif levels["pallets_speed"] == 80:
-                pallets_index = 7
-            elif levels["pallets_speed"] == 70:
-                pallets_index = 8
-            elif levels["pallets_speed"] == 60:
-                pallets_index = 9
-            elif levels["pallets_speed"] == 50:
-                pallets_index = 10
-            elif levels["pallets_speed"] == 40:
-                pallets_index = 11
-            elif levels["pallets_speed"] == 30:
-                pallets_index = 12
-            elif levels["pallets_speed"] == 20:
-                pallets_index = 13
-            elif levels["pallets_speed"] == 10:
-                pallets_index = 14
+            if levels["crawler_speed"] == 150:
+                crawler_index = 0
+            elif levels["crawler_speed"] == 140:
+                crawler_index = 1
+            elif levels["crawler_speed"] == 130:
+                crawler_index = 2
+            elif levels["crawler_speed"] == 120:
+                crawler_index = 3
+            elif levels["crawler_speed"] == 110:
+                crawler_index = 4
+            elif levels["crawler_speed"] == 100:
+                crawler_index = 5
+            elif levels["crawler_speed"] == 90:
+                crawler_index = 6
+            elif levels["crawler_speed"] == 80:
+                crawler_index = 7
+            elif levels["crawler_speed"] == 70:
+                crawler_index = 8
+            elif levels["crawler_speed"] == 60:
+                crawler_index = 9
+            elif levels["crawler_speed"] == 50:
+                crawler_index = 10
+            elif levels["crawler_speed"] == 40:
+                crawler_index = 11
+            elif levels["crawler_speed"] == 30:
+                crawler_index = 12
+            elif levels["crawler_speed"] == 20:
+                crawler_index = 13
+            elif levels["crawler_speed"] == 10:
+                crawler_index = 14
             else:
-                pallets_index = 0
-            self.comboBoxPalletsSpeed.setCurrentIndex(pallets_index)
+                crawler_index = 0
+            self.comboBoxCrawlerSpeed.setCurrentIndex(crawler_index)
 
             # production speeds
 
@@ -584,14 +584,14 @@ class Ui(QtWidgets.QMainWindow):
             else:
                 solar_sattelites = int(regex.integer(str(self.lineEditSolarSattelite.text()).strip()))
 
-        if len(str(self.lineEditPallets.text()).strip()) == 0:
-            pallets = 0
+        if len(str(self.lineEditCrawler.text()).strip()) == 0:
+            crawler = 0
         else:
-            if regex.integer(str(self.lineEditPallets.text()).strip()) == "-":
-                pallets = 0
+            if regex.integer(str(self.lineEditCrawler.text()).strip()) == "-":
+                crawler = 0
             else:
-                pallets = int(regex.integer(str(self.lineEditPallets.text()).strip()))
-        pallets_speed = int(regex.integer(str(self.comboBoxPalletsSpeed.currentText()).strip()))
+                crawler = int(regex.integer(str(self.lineEditCrawler.text()).strip()))
+        crawler_speed = int(regex.integer(str(self.comboBoxCrawlerSpeed.currentText()).strip()))
 
         return {
             "metal_mine_level": metal_mine_level,
@@ -615,8 +615,8 @@ class Ui(QtWidgets.QMainWindow):
             "energy_item": energy_item,
             "energy_tech": energy_tech,
             "solar_sattelites": solar_sattelites,
-            "pallets": pallets,
-            "pallets_speed": pallets_speed
+            "crawler": crawler,
+            "crawler_speed": crawler_speed
         }
 
     def PlanetResources(self):
@@ -624,40 +624,40 @@ class Ui(QtWidgets.QMainWindow):
             levels = self.ResourceCheck()
             metal_mine_per_hour = calculate.metal_per_hour(
                 mine_level=levels["metal_mine_level"],
-                recruit_officers=self.checkBoxRecruitOfficers.isChecked(),
+                commanding_staff=self.checkBoxCommandingStaff.isChecked(),
                 plasma_tech=levels["plasma_tech"],
                 collector=self.checkBoxCollector.isChecked(),
-                merchant=self.checkBoxMerchant.isChecked(),
+                trader=self.checkBoxTrader.isChecked(),
                 universe_speed=levels["universe_speed"],
                 main_income=levels["metal_income"],
                 speed=levels["metal_speed"],
                 item=levels["metal_item"],
                 geologist=self.checkBoxGeologist.isChecked(),
-                pallets=levels["pallets"],
-                pallets_speed=levels["pallets_speed"]
+                crawler=levels["crawler"],
+                crawler_speed=levels["crawler_speed"]
             )
 
             crystal_mine_per_hour = calculate.crystal_per_hour(
                 mine_level=levels["crystal_mine_level"],
-                recruit_officers=self.checkBoxRecruitOfficers.isChecked(),
+                commanding_staff=self.checkBoxCommandingStaff.isChecked(),
                 plasma_tech=levels["plasma_tech"],
                 collector=self.checkBoxCollector.isChecked(),
-                merchant=self.checkBoxMerchant.isChecked(),
+                trader=self.checkBoxTrader.isChecked(),
                 universe_speed=levels["universe_speed"],
                 main_income=levels["crystal_income"],
                 speed=levels["crystal_speed"],
                 item=levels["crystal_item"],
                 geologist=self.checkBoxGeologist.isChecked(),
-                pallets=levels["pallets"],
-                pallets_speed=levels["pallets_speed"]
+                crawler=levels["crawler"],
+                crawler_speed=levels["crawler_speed"]
             )
 
             deuterium_mine_per_hour = calculate.deuterium_per_hour(
                 mine_level=levels["deuterium_mine_level"],
-                recruit_officers=self.checkBoxRecruitOfficers.isChecked(),
+                commanding_staff=self.checkBoxCommandingStaff.isChecked(),
                 plasma_tech=levels["plasma_tech"],
                 collector=self.checkBoxCollector.isChecked(),
-                merchant=self.checkBoxMerchant.isChecked(),
+                trader=self.checkBoxTrader.isChecked(),
                 universe_speed=levels["universe_speed"],
                 speed=levels["deuterium_speed"],
                 item=levels["deuterium_item"],
@@ -666,13 +666,13 @@ class Ui(QtWidgets.QMainWindow):
                 fusion_plant_level=levels["fusion_plant_level"],
                 temperature_max=levels["max_temperature"],
                 temperature_min=levels["min_temperature"],
-                pallets=levels["pallets"],
-                pallets_speed=levels["pallets_speed"]
+                crawler=levels["crawler"],
+                crawler_speed=levels["crawler_speed"]
             )
 
             energy_per_hour = calculate.energy_per_hour(
                 fusion_plant_level=levels["fusion_plant_level"],
-                merchant=self.checkBoxMerchant.isChecked(),
+                trader=self.checkBoxTrader.isChecked(),
                 collector=self.checkBoxCollector.isChecked(),
                 temperature_min=levels["min_temperature"],
                 temperature_max=levels["max_temperature"],
@@ -683,7 +683,7 @@ class Ui(QtWidgets.QMainWindow):
                 metal_mine_level=levels["metal_mine_level"],
                 crystal_mine_level=levels["crystal_mine_level"],
                 deuterium_mine_level=levels["deuterium_mine_level"],
-                recruit_officers=self.checkBoxRecruitOfficers.isChecked(),
+                commanding_staff=self.checkBoxCommandingStaff.isChecked(),
                 engineer=self.checkBoxEngineer.isChecked(),
                 item=levels["energy_item"],
                 energy_tech=levels["energy_tech"],
@@ -691,11 +691,11 @@ class Ui(QtWidgets.QMainWindow):
                 solar_speed=int(regex.integer(str(self.comboBoxSolarPlant.currentText()).strip())),
                 solar_sattelite=levels["solar_sattelites"],
                 solar_sattelite_speed=int(regex.integer(str(self.comboBoxSolarSattelite.currentText()).strip())),
-                pallets=levels["pallets"],
-                pallets_speed=levels["pallets_speed"]
+                crawler=levels["crawler"],
+                crawler_speed=levels["crawler_speed"]
             )
 
-            self.label_pallets.setText("Pallets (" + str(
+            self.label_crawler.setText("Crawler (" + str(
                 (int(levels["metal_mine_level"]) + int(levels["crystal_mine_level"]) + int(levels["deuterium_mine_level"])) * 8) + ")")
 
             self.tableWidgetPlanetTotal.setItem(0, 0, QtWidgets.QTableWidgetItem(
@@ -727,7 +727,7 @@ class Ui(QtWidgets.QMainWindow):
         except:
             self.messageBox("You must enter a valid number", "Warning", "Warning")
 
-    def univerResources(self):
+    def universeResources(self):
         empire_db = empire.EmpireDB()
         universe = empire_db.UniverseSettings()
         if universe is not None:
@@ -736,9 +736,9 @@ class Ui(QtWidgets.QMainWindow):
             self.lineEditPlasmaTech.setText(str(universe["plasma_tech"]))
             self.checkBoxEngineer.setChecked(universe["engineer"])
             self.checkBoxGeologist.setChecked(universe["geologist"])
-            self.checkBoxRecruitOfficers.setChecked(universe["recruit_officers"])
+            self.checkBoxCommandingStaff.setChecked(universe["commanding_staff"])
             self.checkBoxCollector.setChecked(universe["collector"])
-            self.checkBoxMerchant.setChecked(universe["merchant"])
+            self.checkBoxTrader.setChecked(universe["trader"])
 
     def saveUniverseSettings(self):
         universe_speed = self.lineEditUniverseSpeed.text()
@@ -753,9 +753,9 @@ class Ui(QtWidgets.QMainWindow):
             "economy_speed": speed,
             "geologist": self.checkBoxGeologist.isChecked(),
             "engineer": self.checkBoxEngineer.isChecked(),
-            "recruit_officers": self.checkBoxRecruitOfficers.isChecked(),
+            "commanding_staff": self.checkBoxCommandingStaff.isChecked(),
             "collector": self.checkBoxCollector.isChecked(),
-            "merchant": self.checkBoxMerchant.isChecked()
+            "trader": self.checkBoxTrader.isChecked()
         })
         self.allPlanetsTotal()
         self.messageBox("Changes saved!", "Information", "Information")
@@ -772,22 +772,22 @@ class Ui(QtWidgets.QMainWindow):
             planet_levels = empire_db.planetLevels(str(planet["id"]))
             metal_mine_per_hour_total += calculate.metal_per_hour(
                 mine_level=planet_levels["metal_mine"],
-                merchant=settings["merchant"],
+                trader=settings["trader"],
                 collector=settings["collector"],
-                recruit_officers=settings["recruit_officers"],
+                commanding_staff=settings["commanding_staff"],
                 plasma_tech=settings["plasma_tech"],
                 geologist=settings["geologist"],
                 universe_speed=settings["economy_speed"],
                 main_income=planet_levels["metal_main_income"],
                 item=planet_levels["metal_item"],
                 speed=planet_levels["metal_speed"],
-                pallets=planet_levels["pallets"],
-                pallets_speed=planet_levels["pallets_speed"]
+                crawler=planet_levels["crawler"],
+                crawler_speed=planet_levels["crawler_speed"]
             )
             crystal_mine_per_hour_total += calculate.crystal_per_hour(
-                merchant=settings["merchant"],
+                trader=settings["trader"],
                 collector=settings["collector"],
-                recruit_officers=settings["recruit_officers"],
+                commanding_staff=settings["commanding_staff"],
                 plasma_tech=settings["plasma_tech"],
                 geologist=settings["geologist"],
                 universe_speed=settings["economy_speed"],
@@ -795,13 +795,13 @@ class Ui(QtWidgets.QMainWindow):
                 mine_level=planet_levels["crystal_mine"],
                 speed=planet_levels["crystal_speed"],
                 item=planet_levels["crystal_item"],
-                pallets=planet_levels["pallets"],
-                pallets_speed=planet_levels["pallets_speed"]
+                crawler=planet_levels["crawler"],
+                crawler_speed=planet_levels["crawler_speed"]
             )
             deuterium_mine_per_hour_total += calculate.deuterium_per_hour(
-                merchant=settings["merchant"],
+                trader=settings["trader"],
                 collector=settings["collector"],
-                recruit_officers=settings["recruit_officers"],
+                commanding_staff=settings["commanding_staff"],
                 plasma_tech=settings["plasma_tech"],
                 geologist=settings["geologist"],
                 universe_speed=settings["economy_speed"],
@@ -812,13 +812,13 @@ class Ui(QtWidgets.QMainWindow):
                 fusion_plant_speed=planet_levels["fusion_speed"],
                 temperature_min=planet_levels["planet_temperature_min"],
                 temperature_max=planet_levels["planet_temperature_max"],
-                pallets=planet_levels["pallets"],
-                pallets_speed=planet_levels["pallets_speed"]
+                crawler=planet_levels["crawler"],
+                crawler_speed=planet_levels["crawler_speed"]
             )
             energy_per_hour_total += calculate.energy_per_hour(
-                merchant=settings["merchant"],
+                trader=settings["trader"],
                 collector=settings["collector"],
-                recruit_officers=settings["recruit_officers"],
+                commanding_staff=settings["commanding_staff"],
                 fusion_plant_level=planet_levels["fusion_reactor"],
                 fusion_plant_speed=planet_levels["fusion_speed"],
                 temperature_min=planet_levels["planet_temperature_min"],
@@ -836,8 +836,8 @@ class Ui(QtWidgets.QMainWindow):
                 metal_mine_level=planet_levels["metal_mine"],
                 deuterium_mine_level=planet_levels["deuterium_mine"],
                 engineer=settings["engineer"],
-                pallets=planet_levels["pallets"],
-                pallets_speed=planet_levels["pallets_speed"]
+                crawler=planet_levels["crawler"],
+                crawler_speed=planet_levels["crawler_speed"]
             )
 
             self.tableWidgetAllPlanetTotal.setItem(0, 0, QtWidgets.QTableWidgetItem(
@@ -896,8 +896,8 @@ class Ui(QtWidgets.QMainWindow):
                 "solar_plant_speed": self.comboBoxSolarPlant.currentText().replace("%", ""),
                 "fusion_speed": self.comboBoxFusionReactor.currentText().replace("%", ""),
                 "solar_sattelite_speed": self.comboBoxSolarSattelite.currentText().replace("%", ""),
-                "pallets": str(levels["pallets"]).strip(),
-                "pallets_speed": self.comboBoxPalletsSpeed.currentText().replace("%", ""),
+                "crawler": str(levels["crawler"]).strip(),
+                "crawler_speed": self.comboBoxCrawlerSpeed.currentText().replace("%", ""),
                 "planet_id": str(self.lineEditPlanetID.text()).strip()
             })
             self.messageBox("Changes saved!", "Information", "Information")
