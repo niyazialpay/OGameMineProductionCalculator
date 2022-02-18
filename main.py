@@ -745,7 +745,7 @@ class Ui(QtWidgets.QMainWindow):
         if len(universe_speed) > 0 and universe_speed != "" and int(universe_speed) > 0:
             speed = universe_speed
         else:
-            speed = 1
+            speed = "1"
         empire_db = empire.EmpireDB()
         empire_db.saveUniverseSettings({
             "plasma_tech": self.lineEditPlasmaTech.text(),
