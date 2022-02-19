@@ -1,7 +1,4 @@
 import math
-from db import empire
-
-db = empire.EmpireDB()
 
 
 def metal_per_hour(
@@ -16,9 +13,9 @@ def metal_per_hour(
         geologist,
         commanding_staff,
         crawler,
-        crawler_speed
+        crawler_speed,
+        minimum_income
 ):
-    minimum_income = db.UniverseSettings()["metal_income"]
     base_value = round(30 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100)
     if main_income > minimum_income:
         base_value = round(30 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100) * (main_income / minimum_income)
@@ -59,9 +56,9 @@ def crystal_per_hour(
         geologist,
         commanding_staff,
         crawler,
-        crawler_speed
+        crawler_speed,
+        minimum_income
 ):
-    minimum_income = db.UniverseSettings()["crystal_income"]
     base_value = round(20 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100)
     if main_income > minimum_income:
         base_value = round(20 * mine_level * pow(1.1, mine_level) * universe_speed * speed / 100) * (main_income / minimum_income)

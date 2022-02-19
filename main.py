@@ -121,6 +121,9 @@ class Ui(QtWidgets.QMainWindow):
         self.lineEditCrystalItem.textChanged.connect(self.PlanetResources)
         self.lineEditDeuteriumItem.textChanged.connect(self.PlanetResources)
 
+        self.lineEditMinimumMetalIncome.textChanged.connect(self.PlanetResources)
+        self.lineEditMinimumCrystalIncome.textChanged.connect(self.PlanetResources)
+
         self.lineEditUniverseSpeed.textChanged.connect(self.PlanetResources)
         self.lineEditPlasmaTech.textChanged.connect(self.PlanetResources)
 
@@ -593,6 +596,28 @@ class Ui(QtWidgets.QMainWindow):
                 crawler = int(regex.integer(str(self.lineEditCrawler.text()).strip()))
         crawler_speed = int(regex.integer(str(self.comboBoxCrawlerSpeed.currentText()).strip()))
 
+        if len(str(self.lineEditMinimumMetalIncome.text()).strip()) == 0:
+            minimum_metal_income = 1
+        else:
+            if regex.integer(str(self.lineEditMinimumMetalIncome.text()).strip()) == "-":
+                minimum_metal_income = 1
+            else:
+                minimum_metal_income = int(regex.integer(str(self.lineEditMinimumMetalIncome.text()).strip()))
+
+        if minimum_metal_income == 0 or minimum_metal_income <= 0:
+            minimum_metal_income = 1
+
+        if len(str(self.lineEditMinimumCrystalIncome.text()).strip()) == 0:
+            minimum_crystal_income = 1
+        else:
+            if regex.integer(str(self.lineEditMinimumCrystalIncome.text()).strip()) == "-":
+                minimum_crystal_income = 1
+            else:
+                minimum_crystal_income = int(regex.integer(str(self.lineEditMinimumCrystalIncome.text()).strip()))
+
+        if minimum_crystal_income == 0 or minimum_crystal_income <= 0:
+            minimum_crystal_income = 1
+
         return {
             "metal_mine_level": metal_mine_level,
             "crystal_mine_level": crystal_mine_level,
@@ -616,7 +641,9 @@ class Ui(QtWidgets.QMainWindow):
             "energy_tech": energy_tech,
             "solar_sattelites": solar_sattelites,
             "crawler": crawler,
-            "crawler_speed": crawler_speed
+            "crawler_speed": crawler_speed,
+            "minimum_metal_income": minimum_metal_income,
+            "minimum_crystal_income": minimum_crystal_income,
         }
 
     def PlanetResources(self):
@@ -634,7 +661,8 @@ class Ui(QtWidgets.QMainWindow):
                 item=levels["metal_item"],
                 geologist=self.checkBoxGeologist.isChecked(),
                 crawler=levels["crawler"],
-                crawler_speed=levels["crawler_speed"]
+                crawler_speed=levels["crawler_speed"],
+                minimum_income=levels["minimum_metal_income"]
             )
 
             crystal_mine_per_hour = calculate.crystal_per_hour(
@@ -649,7 +677,8 @@ class Ui(QtWidgets.QMainWindow):
                 item=levels["crystal_item"],
                 geologist=self.checkBoxGeologist.isChecked(),
                 crawler=levels["crawler"],
-                crawler_speed=levels["crawler_speed"]
+                crawler_speed=levels["crawler_speed"],
+                minimum_income=levels["minimum_crystal_income"]
             )
 
             deuterium_mine_per_hour = calculate.deuterium_per_hour(
@@ -786,7 +815,8 @@ class Ui(QtWidgets.QMainWindow):
                 item=planet_levels["metal_item"],
                 speed=planet_levels["metal_speed"],
                 crawler=planet_levels["crawler"],
-                crawler_speed=planet_levels["crawler_speed"]
+                crawler_speed=planet_levels["crawler_speed"],
+                minimum_income=settings["metal_income"]
             )
             crystal_mine_per_hour_total += calculate.crystal_per_hour(
                 trader=settings["trader"],
@@ -800,7 +830,8 @@ class Ui(QtWidgets.QMainWindow):
                 speed=planet_levels["crystal_speed"],
                 item=planet_levels["crystal_item"],
                 crawler=planet_levels["crawler"],
-                crawler_speed=planet_levels["crawler_speed"]
+                crawler_speed=planet_levels["crawler_speed"],
+                minimum_income=settings["crystal_income"]
             )
             deuterium_mine_per_hour_total += calculate.deuterium_per_hour(
                 trader=settings["trader"],
