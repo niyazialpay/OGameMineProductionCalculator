@@ -739,6 +739,8 @@ class Ui(QtWidgets.QMainWindow):
             self.checkBoxCommandingStaff.setChecked(universe["commanding_staff"])
             self.checkBoxCollector.setChecked(universe["collector"])
             self.checkBoxTrader.setChecked(universe["trader"])
+            self.lineEditMinimumMetalIncome.setText(str(universe["metal_income"]))
+            self.lineEditMinimumCrystalIncome.setText(str(universe["crystal_income"]))
 
     def saveUniverseSettings(self):
         universe_speed = self.lineEditUniverseSpeed.text()

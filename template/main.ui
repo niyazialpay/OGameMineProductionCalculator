@@ -1636,7 +1636,7 @@ QTableWidget#tableWidgetPlanetList{
        </rect>
       </property>
       <property name="text">
-       <string>0</string>
+       <string>1</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -1652,7 +1652,7 @@ QTableWidget#tableWidgetPlanetList{
        </rect>
       </property>
       <property name="text">
-       <string>0</string>
+       <string>1</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
