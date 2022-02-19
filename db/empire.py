@@ -110,7 +110,7 @@ class EmpireDB:
             return None
 
     def saveUniverseSettings(self, values):
-        self.__db.execute("update research_and_officers set plasma_tech=" + str(regex.integer(values["plasma_tech"])) + ", energy_tech=" + str(regex.integer(values["energy_tech"])) + ", economy_speed=" + str(regex.integer(values["economy_speed"])) + ", geologist=" + str(regex.check_bool(values["geologist"])) + ", engineer=" + str(regex.check_bool(values["engineer"])) + ", commanding_staff=" + str(regex.check_bool(values["commanding_staff"])) + ", collector=" + str(regex.check_bool(values["collector"])) + ", trader=" + str(regex.check_bool(values["trader"])) + " where id=1")
+        self.__db.execute("update research_and_officers set plasma_tech=" + str(regex.integer(values["plasma_tech"])) + ", energy_tech=" + str(regex.integer(values["energy_tech"])) + ", economy_speed=" + str(regex.integer(values["economy_speed"])) + ", geologist=" + str(regex.check_bool(values["geologist"])) + ", engineer=" + str(regex.check_bool(values["engineer"])) + ", commanding_staff=" + str(regex.check_bool(values["commanding_staff"])) + ", collector=" + str(regex.check_bool(values["collector"])) + ", trader=" + str(regex.check_bool(values["trader"])) + ", metal_income=" + str(regex.integer(values["metal_income"])) + ", crystal_income=" + str(regex.integer(values["crystal_income"])) + " where id=1")
         self.__connection.commit()
 
     def UniverseSettings(self):

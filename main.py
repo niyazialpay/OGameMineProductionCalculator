@@ -755,7 +755,9 @@ class Ui(QtWidgets.QMainWindow):
             "engineer": self.checkBoxEngineer.isChecked(),
             "commanding_staff": self.checkBoxCommandingStaff.isChecked(),
             "collector": self.checkBoxCollector.isChecked(),
-            "trader": self.checkBoxTrader.isChecked()
+            "trader": self.checkBoxTrader.isChecked(),
+            "metal_income": self.lineEditMinimumMetalIncome.text(),
+            "crystal_income": self.lineEditMinimumCrystalIncome.text()
         })
         self.allPlanetsTotal()
         self.messageBox("Changes saved!", "Information", "Information")
